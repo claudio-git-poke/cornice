@@ -12,35 +12,35 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            font-family: Arial, sans-serif;
         }
 
         .card-container {
             position: relative;
-            /* Usiamo le dimensioni reali o adattive basate sull'immagine */
             width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1 / 1.4; /* Mantiene proporzioni perfette da carta */
+            max-width: 400px;
+            aspect-ratio: 1 / 1.35;
             
+            /* Usa la tua carta.png originale */
             background-image: url('./carta.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            font-family: Arial, sans-serif;
         }
 
-        /* Area interna posizionata esattamente nel buco centrale */
+        /* Questo box riempie il "buco" trasparente con il colore della pergamena e ci mette il testo sopra */
         .card-inner-box {
             position: absolute;
-            /* Percentuali così si adatta perfettamente a qualsiasi schermo */
-            top: 13.5%;   
-            left: 15.5%;  
-            width: 69%; 
-            height: 52%; 
+            top: 13.8%;   
+            left: 17%;  
+            width: 66%; 
+            height: 50.5%; 
             
-            padding: 10px;
-            box-sizing: border-box;
-            background-color: rgba(255, 255, 255, 0.15); /* Sfondo leggero opzionale */
+            /* Colore di sfondo che simula la pergamena per tappare il buco */
+            background-color: #d2c2a6;
+            
             color: #2b1d0c;
-            overflow: hidden;
+            padding: 15px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -54,7 +54,7 @@
         }
 
         .card-inner-box p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin: 0;
             line-height: 1.3;
         }
@@ -65,7 +65,7 @@
 <div class="card-container">
     <div class="card-inner-box">
         <h2>Titolo Carta</h2>
-        <p>Qui puoi inserire la descrizione, le statistiche o un'altra immagine. Ora è perfettamente dentro la cornice!</p>
+        <p>Il buco ora è chiuso dal CSS e il testo è perfettamente al centro della cornice!</p>
     </div>
 </div>
 
