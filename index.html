@@ -21,22 +21,20 @@
             max-width: 400px;
             aspect-ratio: 1 / 1.35;
             
-            /* Usa la tua carta.png originale */
             background-image: url('./carta.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
         }
 
-        /* Questo box riempie il "buco" trasparente con il colore della pergamena e ci mette il testo sopra */
         .card-inner-box {
             position: absolute;
-            top: 13.8%;   
-            left: 17%;  
-            width: 66%; 
-            height: 50.5%; 
+            /* Valori corretti per coprire esattamente il buco centrale */
+            top: 21%;   
+            left: 15.5%;  
+            width: 69%; 
+            height: 48%; 
             
-            /* Colore di sfondo che simula la pergamena per tappare il buco */
-            background-color: #d2c2a6;
+            background-color: #d2c2a6; /* Colore pergamena per tappare il buco */
             
             color: #2b1d0c;
             padding: 15px;
@@ -65,7 +63,7 @@
 <div class="card-container">
     <div class="card-inner-box">
         <h2>Titolo Carta</h2>
-        <p>Il buco ora è chiuso dal CSS e il testo è perfettamente al centro della cornice!</p>
+        <p>Adesso il box di pergamena si incastra alla perfezione nel buco della cornice!</p>
     </div>
 </div>
 
