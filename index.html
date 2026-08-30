@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica - Effetto Sbrilluccichio</title>
+    <title>Carta Pokémon Antica - Effetti Lusso</title>
     <style>
         body {
             background: radial-gradient(circle at center, #2b231d 0%, #120e0b 100%);
@@ -30,7 +30,7 @@
             display: flex;
             gap: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            z-index: 10;
+            z-index: 20;
         }
 
         .rarity-btn {
@@ -57,118 +57,131 @@
             background: radial-gradient(circle at center, rgba(245, 230, 205, 0.9) 0%, rgba(196, 164, 124, 0.95) 100%);
             border-radius: 20px;
             border: 14px solid #5c3d29; 
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.8),
-                inset 0 0 30px rgba(70, 45, 25, 0.7),
-                inset 0 0 10px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(70, 45, 25, 0.7);
             display: flex;
             flex-direction: column;
             padding: 15px;
             box-sizing: border-box;
             position: relative;
-            overflow: hidden; /* Fondamentale per contenere l'effetto sbrilluccichio */
+            overflow: hidden;
             transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        /* --- EFFETTO SBRILLUCCICHIO (HOLO FOIL) --- */
-        .pokemon-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0) 30%,
-                rgba(255, 255, 255, 0.25) 45%,
-                rgba(255, 215, 0, 0.3) 50%,
-                rgba(255, 255, 255, 0.25) 55%,
-                rgba(255, 255, 255, 0) 70%
-            );
-            transform: rotate(25deg) translateY(-100%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        /* --- STILI PER RARITÀ --- */
 
-        /* Attivazione sbrilluccichio per Ultra Rara e Leggendaria */
-        .pokemon-card.ultra-rara::after,
-        .pokemon-card.leggendaria::after {
-            opacity: 1;
-            animation: holo-shine 4s infinite linear;
-        }
-
-        @keyframes holo-shine {
-            0% {
-                transform: rotate(25deg) translateY(-100%);
-            }
-            100% {
-                transform: rotate(25deg) translateY(100%);
-            }
-        }
-
-
-        /* --- STILI DINAMICI PER RARITÀ --- */
-
-        /* Comune: Grigio chiaro */
+        /* 1. Comune: Grigio chiaro */
         .pokemon-card.comune {
-            background: radial-gradient(circle at center, #e8e8e8 0%, #cfcfcf 100%);
-            border-color: #8c8c8c;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(100, 100, 100, 0.5);
+            background: radial-gradient(circle at center, #dcdcdc 0%, #b5b5b5 100%);
+            border-color: #737373;
         }
         .pokemon-card.comune .card-inner-frame {
-            background: linear-gradient(135deg, #f2f2f2 0%, #dedede 100%);
-            border-color: #a6a6a6;
+            background: linear-gradient(135deg, #eaeaea 0%, #cccccc 100%);
+            border-color: #8c8c8c;
         }
 
-        /* Non Comune: Grigio scuro */
+        /* 2. Non Comune: Grigio scuro */
         .pokemon-card.non-comune {
-            background: radial-gradient(circle at center, #737373 0%, #4a4a4a 100%);
-            border-color: #2b2b2b;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(20, 20, 20, 0.8);
+            background: radial-gradient(circle at center, #595959 0%, #383838 100%);
+            border-color: #1a1a1a;
         }
         .pokemon-card.non-comune .card-inner-frame {
-            background: linear-gradient(135deg, #595959 0%, #3d3d3d 100%);
-            border-color: #1f1f1f;
+            background: linear-gradient(135deg, #4a4a4a 100%, #2e2e2e 0%);
+            border-color: #141414;
         }
-        .pokemon-card.non-comune .card-description-text { color: #e6e6e6; }
+        .pokemon-card.non-comune .card-description-text { color: #d9d9d9; }
 
-        /* Rara: Nero */
+        /* 3. Rara: Grigio quasi nero */
         .pokemon-card.rara {
-            background: radial-gradient(circle at center, #262626 0%, #0d0d0d 100%);
-            border-color: #1a1a1a;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(0, 0, 0, 0.9);
+            background: radial-gradient(circle at center, #222222 0%, #0d0d0d 100%);
+            border-color: #050505;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95), inset 0 0 25px rgba(0, 0, 0, 0.9);
         }
         .pokemon-card.rara .card-inner-frame {
-            background: linear-gradient(135deg, #1c1c1c 0%, #0f0f0f 100%);
-            border-color: #333333;
+            background: linear-gradient(135deg, #171717 0%, #080808 100%);
+            border-color: #262626;
         }
-        .pokemon-card.rara .card-description-text { color: #d9d9d9; }
+        .pokemon-card.rara .card-description-text { color: #cccccc; }
 
-        /* Ultra Rara: Metallico */
+        /* 4. Ultra Rara: Arcobaleno cangiante super wow in movimento (Foil Olografico) */
         .pokemon-card.ultra-rara {
-            background: linear-gradient(135deg, #d9d9d9 0%, #8c9398 50%, #596066 100%);
-            border-color: #3a4045;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85), inset 0 0 25px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+            background-size: 400% 400%;
+            animation: rainbowFoil 8s ease infinite;
+            border-color: #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 35px rgba(255, 255, 255, 0.6);
         }
         .pokemon-card.ultra-rara .card-inner-frame {
-            background: linear-gradient(135deg, #b0b8bf 0%, #6e757d 100%);
-            border-color: #43494f;
+            background: rgba(20, 20, 20, 0.6);
+            border-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
         }
-        .pokemon-card.ultra-rara .card-description-text { color: #1a1f24; }
+        .pokemon-card.ultra-rara .card-description-text { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.9); }
+        
+        @keyframes rainbowFoil {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        /* Leggendaria: Dorata */
+        /* Overlay brillantini scorrevoli per Ultra Rara */
+        .pokemon-card.ultra-rara::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(0deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(30deg);
+            animation: shineOverlay 3s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes shineOverlay {
+            0% { transform: translateY(-100%) rotate(30deg); }
+            100% { transform: translateY(100%) rotate(30deg); }
+        }
+
+        /* 5. Leggendaria: Dorata con animazioni di scintillio che vanno e vengono */
         .pokemon-card.leggendaria {
-            background: radial-gradient(circle at center, #ffea9f 0%, #d4af37 60%, #997a15 100%);
-            border-color: #5c4405;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 235, 130, 0.6);
+            background: radial-gradient(circle at center, #fff2b2 0%, #d4af37 60%, #856508 100%);
+            border-color: #3b2c02;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.7), inset 0 0 30px rgba(255, 240, 150, 0.8);
+            animation: goldPulse 4s ease-in-out infinite;
         }
         .pokemon-card.leggendaria .card-inner-frame {
-            background: linear-gradient(135deg, #fceca4 0%, #c29b27 100%);
-            border-color: #6e5206;
+            background: linear-gradient(135deg, #fff7d1 0%, #c29b27 100%);
+            border-color: #5c4303;
         }
-        .pokemon-card.leggendaria .card-description-text { color: #3b2d03; }
+        .pokemon-card.leggendaria .card-description-text { color: #2e2202; }
+
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 20px 30px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(255, 240, 150, 0.5); }
+            50% { box-shadow: 0 20px 60px rgba(255, 215, 0, 0.9), inset 0 0 40px rgba(255, 255, 200, 0.9); }
+        }
+
+        /* Scintille intermittenti per Leggendaria */
+        .sparkle-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 5;
+        }
+        .sparkle {
+            position: absolute;
+            width: 6px; height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffc107;
+            opacity: 0;
+            animation: sparkleAnim 2.5s ease-in-out infinite;
+        }
+        .sparkle:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 75%; left: 80%; animation-delay: 0.8s; }
+        .sparkle:nth-child(3) { top: 40%; left: 85%; animation-delay: 1.5s; }
+        .sparkle:nth-child(4) { top: 80%; left: 25%; animation-delay: 0.4s; }
+
+        @keyframes sparkleAnim {
+            0%, 100% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.4); opacity: 1; }
+        }
 
 
         /* Area interna della carta */
@@ -182,7 +195,7 @@
             padding: 12px;
             box-sizing: border-box;
             box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            z-index: 2;
             position: relative;
             transition: background 0.4s ease, border-color 0.4s ease;
         }
@@ -203,7 +216,7 @@
             justify-content: center;
             padding: 0 8px;
             box-sizing: border-box;
-            z-index: 2;
+            z-index: 3;
         }
 
         .unown-svg-title {
@@ -280,8 +293,15 @@
 
     <!-- Carta Pokémon -->
     <div class="pokemon-card comune" id="pokemonCard">
+        <!-- Contenitore scintille (visibile solo se leggendaria o attivato) -->
+        <div class="sparkle-container" id="sparkleBox">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+
         <div class="card-inner-frame">
-            
             <!-- Titolo Unown -->
             <div class="title-container">
                 <svg class="unown-svg-title" viewBox="0 0 280 45" xmlns="http://www.w3.org/2000/svg">
@@ -307,10 +327,9 @@
             <!-- Testo Descrittivo -->
             <div class="card-description-box">
                 <p class="card-description-text" id="descText">
-                    "Carta Comune: Un reperto piuttosto comune tra la polvere delle antiche biblioteche."
+                    "Carta Comune: Un reperto piuttosto comune tra la polvere."
                 </p>
             </div>
-            
         </div>
     </div>
 
@@ -319,29 +338,38 @@
         function setRarity(rarityClass) {
             const card = document.getElementById('pokemonCard');
             const descText = document.getElementById('descText');
+            const sparkleBox = document.getElementById('sparkleBox');
             
-            // Rimuove e aggiorna la classe della carta
             card.className = 'pokemon-card ' + rarityClass;
             
-            // Aggiorna il testo descrittivo in base alla rarità scelta
+            // Attiva le scintille solo se è leggendaria
+            if(rarityClass === 'leggendaria') {
+                sparkleBox.style.display = 'block';
+            } else {
+                sparkleBox.style.display = 'none';
+            }
+
             switch(rarityClass) {
                 case 'comune':
-                    descText.innerText = '"Carta Comune: Un reperto piuttosto comune tra la polvere delle antiche biblioteche."';
+                    descText.innerText = '"Carta Comune: Semplice grigio chiaro, un reperto comune e basilare."';
                     break;
                 case 'non-comune':
-                    descText.innerText = '"Carta Non Comune: Segni di usura più marcati testimoniano la sua resistenza nei secoli."';
+                    descText.innerText = '"Carta Non Comune: Grigio scuro, leggermente più resistente e difficile da trovare."';
                     break;
                 case 'rara':
-                    descText.innerText = '"Carta Rara: Forgiata in roccia d’ossidiana, custodisce segreti oscuri e potenti."';
+                    descText.innerText = '"Carta Rara: Grigio quasi nero, cupo e misterioso."';
                     break;
                 case 'ultra-rara':
-                    descText.innerText = '"Carta Ultra Rara: Una lega metallica misteriosa protegge questa reliquia dal passare del tempo."';
+                    descText.innerText = '"Carta Ultra Rara: Foil arcobaleno cangiante in movimento, puro spettacolo visivo!"';
                     break;
                 case 'leggendaria':
-                    descText.innerText = '"Carta Leggendaria: Brillante oro puro. Risplende di luce propria attirando a sé le energie del cosmo."';
+                    descText.innerText = '"Carta Leggendaria: Dorata, baciata dal sole con bagliori e scintille che vanno e vengono."';
                     break;
             }
         }
+        
+        // Imposta lo stato iniziale delle scintille su comune (spente)
+        document.getElementById('sparkleBox').style.display = 'none';
     </script>
 
 </body>
