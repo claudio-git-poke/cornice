@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica - Unown</title>
+    <title>Carta Pokémon Antica - Selettore rarità</title>
     <style>
-        /* Schermo intero e sfondo suggestivo */
         body {
             background: radial-gradient(circle at center, #2b231d 0%, #120e0b 100%);
             display: flex;
@@ -18,12 +17,44 @@
             font-family: 'Georgia', serif;
         }
 
-        /* Contenitore principale della carta */
+        /* Menu fluttuante per testare le rarità */
+        .rarity-controls {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 20, 15, 0.85);
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: 2px solid #5c3d29;
+            display: flex;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .rarity-btn {
+            background: #4d3825;
+            color: #d1b280;
+            border: 1px solid #7a5c3e;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 11px;
+            font-family: 'Georgia', serif;
+            transition: all 0.2s ease;
+        }
+
+        .rarity-btn:hover {
+            background: #7a5c3e;
+            color: #fff;
+        }
+
+        /* Contenitore principale della carta (I colori cambiano tramite classi JavaScript) */
         .pokemon-card {
             width: 380px;
             height: 532px;
-            background: 
-                radial-gradient(circle at center, rgba(245, 230, 205, 0.9) 0%, rgba(196, 164, 124, 0.95) 100%);
+            background: radial-gradient(circle at center, rgba(245, 230, 205, 0.9) 0%, rgba(196, 164, 124, 0.95) 100%);
             border-radius: 20px;
             border: 14px solid #5c3d29; 
             box-shadow: 
@@ -35,7 +66,70 @@
             padding: 15px;
             box-sizing: border-box;
             position: relative;
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
+
+        /* --- STILI DINAMICI PER RARITÀ --- */
+
+        /* Comune: Grigio chiaro */
+        .pokemon-card.comune {
+            background: radial-gradient(circle at center, #e8e8e8 0%, #cfcfcf 100%);
+            border-color: #8c8c8c;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(100, 100, 100, 0.5);
+        }
+        .pokemon-card.comune .card-inner-frame {
+            background: linear-gradient(135deg, #f2f2f2 0%, #dedede 100%);
+            border-color: #a6a6a6;
+        }
+
+        /* Non Comune: Grigio scuro */
+        .pokemon-card.non-comune {
+            background: radial-gradient(circle at center, #737373 0%, #4a4a4a 100%);
+            border-color: #2b2b2b;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(20, 20, 20, 0.8);
+        }
+        .pokemon-card.non-comune .card-inner-frame {
+            background: linear-gradient(135deg, #595959 0%, #3d3d3d 100%);
+            border-color: #1f1f1f;
+        }
+        .pokemon-card.non-comune .card-description-text { color: #e6e6e6; }
+
+        /* Rara: Nero */
+        .pokemon-card.rara {
+            background: radial-gradient(circle at center, #262626 0%, #0d0d0d 100%);
+            border-color: #1a1a1a;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(0, 0, 0, 0.9);
+        }
+        .pokemon-card.rara .card-inner-frame {
+            background: linear-gradient(135deg, #1c1c1c 0%, #0f0f0f 100%);
+            border-color: #333333;
+        }
+        .pokemon-card.rara .card-description-text { color: #d9d9d9; }
+
+        /* Ultra Rara: Metallico */
+        .pokemon-card.ultra-rara {
+            background: linear-gradient(135deg, #d9d9d9 0%, #8c9398 50%, #596066 100%);
+            border-color: #3a4045;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85), inset 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+        .pokemon-card.ultra-rara .card-inner-frame {
+            background: linear-gradient(135deg, #b0b8bf 0%, #6e757d 100%);
+            border-color: #43494f;
+        }
+        .pokemon-card.ultra-rara .card-description-text { color: #1a1f24; }
+
+        /* Leggendaria: Dorata */
+        .pokemon-card.leggendaria {
+            background: radial-gradient(circle at center, #ffea9f 0%, #d4af37 60%, #997a15 100%);
+            border-color: #5c4405;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 235, 130, 0.6);
+        }
+        .pokemon-card.leggendaria .card-inner-frame {
+            background: linear-gradient(135deg, #fceca4 0%, #c29b27 100%);
+            border-color: #6e5206;
+        }
+        .pokemon-card.leggendaria .card-description-text { color: #3b2d03; }
+
 
         /* Area interna della carta */
         .card-inner-frame {
@@ -50,9 +144,10 @@
             box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
             z-index: 1;
             position: relative;
+            transition: background 0.4s ease, border-color 0.4s ease;
         }
 
-        /* --- Area del Titolo (Targhetta antica) --- */
+        /* Titolo */
         .title-container {
             position: absolute;
             top: 15px;
@@ -62,8 +157,7 @@
             background: linear-gradient(to bottom, #4d3825, #2a1f15);
             border: 3px solid #1a130d;
             border-radius: 10px 10px 30px 10px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 
-                        2px 2px 4px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -78,7 +172,7 @@
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
-        /* --- Area Rossa: Immagine Pokémon (Placeholder) --- */
+        /* Immagine */
         .card-image-box {
             position: absolute;
             top: 82px;
@@ -88,8 +182,7 @@
             background: linear-gradient(135deg, #2b231d 0%, #1a130d 100%);
             border: 4px solid #5c3d29;
             border-radius: 8px;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8),
-                        0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 4px 6px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,18 +199,16 @@
             padding: 10px;
         }
 
-        /* --- Area Verde: Testo Descrittivo --- */
+        /* Testo */
         .card-description-box {
             position: absolute;
             bottom: 12px;
             left: 12px;
             right: 12px;
             height: 110px;
-            background: linear-gradient(to bottom, #f4e8d1, #dcc4a0);
-            border: 3px solid #7a5c3e;
+            background: rgba(0, 0, 0, 0.15);
+            border: 3px solid rgba(0, 0, 0, 0.2);
             border-radius: 8px;
-            box-shadow: inset 0 0 10px rgba(122, 92, 62, 0.3),
-                        0 2px 4px rgba(0,0,0,0.2);
             padding: 10px 12px;
             box-sizing: border-box;
             display: flex;
@@ -132,69 +223,35 @@
             text-align: center;
             line-height: 1.4;
             font-style: italic;
+            transition: color 0.4s ease;
         }
     </style>
 </head>
 <body>
 
-    <div class="pokemon-card">
+    <div class="rarity-controls">
+        <button class="rarity-btn" onclick="setRarity('comune')">Comune</button>
+        <button class="rarity-btn" onclick="setRarity('non-comune')">Non Comune</button>
+        <button class="rarity-btn" onclick="setRarity('rara')">Rara</button>
+        <button class="rarity-btn" onclick="setRarity('ultra-rara')">Ultra Rara</button>
+        <button class="rarity-btn" onclick="setRarity('leggendaria')">Leggendaria</button>
+    </div>
+
+    <div class="pokemon-card comune" id="pokemonCard">
         <div class="card-inner-frame">
             
             <div class="title-container">
                 <svg class="unown-svg-title" viewBox="0 0 280 45" xmlns="http://www.w3.org/2000/svg">
                     <g fill="none" stroke="#d1b280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        
-                        <g transform="translate(10, 5)">
-                            <path d="M4 28 L4 12 L16 24 L16 8"/>
-                            <circle cx="10" cy="18" r="4" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(38, 5)">
-                            <circle cx="10" cy="18" r="9"/>
-                            <circle cx="10" cy="18" r="3" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(66, 5)">
-                            <path d="M3 28 L3 12 L9 20 L15 12 L15 28"/>
-                            <circle cx="9" cy="17" r="3.5" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(94, 5)">
-                            <path d="M14 28 L4 28 L4 8 L14 8"/>
-                            <path d="M4 18 L11 18"/>
-                            <circle cx="9" cy="18" r="3.5" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(132, 5)">
-                            <circle cx="10" cy="14" r="8"/>
-                            <path d="M10 22 L10 30"/>
-                            <circle cx="10" cy="14" r="3" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(160, 5)">
-                            <circle cx="10" cy="18" r="9"/>
-                            <circle cx="10" cy="18" r="3" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(188, 5)">
-                            <path d="M10 8 L10 28"/>
-                            <path d="M4 12 L14 22"/>
-                            <path d="M4 24 L14 14"/>
-                            <circle cx="10" cy="18" r="3" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(216, 5)">
-                            <path d="M14 28 L4 28 L4 8 L14 8"/>
-                            <path d="M4 18 L11 18"/>
-                            <path d="M7 3 L11 5"/>
-                            <circle cx="9" cy="18" r="3.5" fill="#d1b280"/>
-                        </g>
-
-                        <g transform="translate(244, 5)">
-                            <path d="M3 28 L3 12 L9 20 L15 12 L15 28"/>
-                            <circle cx="9" cy="17" r="3.5" fill="#d1b280"/>
-                        </g>
-
+                        <g transform="translate(10, 5)"><path d="M4 28 L4 12 L16 24 L16 8"/><circle cx="10" cy="18" r="4" fill="#d1b280"/></g>
+                        <g transform="translate(38, 5)"><circle cx="10" cy="18" r="9"/><circle cx="10" cy="18" r="3" fill="#d1b280"/></g>
+                        <g transform="translate(66, 5)"><path d="M3 28 L3 12 L9 20 L15 12 L15 28"/><circle cx="9" cy="17" r="3.5" fill="#d1b280"/></g>
+                        <g transform="translate(94, 5)"><path d="M14 28 L4 28 L4 8 L14 8"/><path d="M4 18 L11 18"/><circle cx="9" cy="18" r="3.5" fill="#d1b280"/></g>
+                        <g transform="translate(132, 5)"><circle cx="10" cy="14" r="8"/><path d="M10 22 L10 30"/><circle cx="10" cy="14" r="3" fill="#d1b280"/></g>
+                        <g transform="translate(160, 5)"><circle cx="10" cy="18" r="9"/><circle cx="10" cy="18" r="3" fill="#d1b280"/></g>
+                        <g transform="translate(188, 5)"><path d="M10 8 L10 28"/><path d="M4 12 L14 22"/><path d="M4 24 L14 14"/><circle cx="10" cy="18" r="3" fill="#d1b280"/></g>
+                        <g transform="translate(216, 5)"><path d="M14 28 L4 28 L4 8 L14 8"/><path d="M4 18 L11 18"/><path d="M7 3 L11 5"/><circle cx="9" cy="18" r="3.5" fill="#d1b280"/></g>
+                        <g transform="translate(244, 5)"><path d="M3 28 L3 12 L9 20 L15 12 L15 28"/><circle cx="9" cy="17" r="3.5" fill="#d1b280"/></g>
                     </g>
                 </svg>
             </div>
@@ -204,13 +261,42 @@
             </div>
 
             <div class="card-description-box">
-                <p class="card-description-text">
-                    "Ritrovata tra le rovine di un tempio dimenticato. Emana una strana energia primordiale ogni volta che viene estratta dal mazzo."
+                <p class="card-description-text" id="descText">
+                    "Ritrovata tra le rovine di un tempio dimenticato. Emana una strana energia primordiale."
                 </p>
             </div>
             
         </div>
     </div>
+
+    <script>
+        function setRarity(rarityClass) {
+            const card = document.getElementById('pokemonCard');
+            const descText = document.getElementById('descText');
+            
+            // Rimuove tutte le classi di rarità precedenti
+            card.className = 'pokemon-card ' + rarityClass;
+            
+            // Cambia il testo descrittivo in base alla rarità scelta
+            switch(rarityClass) {
+                comune:
+                    descText.innerText = '"Carta Comune: Un reperto piuttosto comune tra la polvere delle antiche biblioteche."';
+                    break;
+                case 'non-comune':
+                    descText.innerText = '"Carta Non Comune: Segni di usura più marcati testimoniano la sua resistenza nei secoli."';
+                    break;
+                case 'rara':
+                    descText.innerText = '"Carta Rara: Forgiata in roccia d’ossidiana, custodisce segreti oscuri e potenti."';
+                    break;
+                case 'ultra-rara':
+                    descText.innerText = '"Carta Ultra Rara: Una lega metallica misteriosa protegge questa reliquia dal passare del tempo."';
+                    break;
+                case 'leggendaria':
+                    descText.innerText = '"Carta Leggendaria: Brillante oro puro. Risplende di luce propria attirando a sé le energie del cosmo."';
+                    break;
+            }
+        }
+    </script>
 
 </body>
 </html>
