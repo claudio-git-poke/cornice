@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica</title>
+    <title>Carta Pokémon Antica - Unown</title>
     <style>
         /* Schermo intero e sfondo suggestivo */
         body {
@@ -52,13 +52,13 @@
             position: relative;
         }
 
-        /* --- Area del Titolo (Con glifi Unown Vettoriali) --- */
+        /* --- Area del Titolo (Targhetta antica) --- */
         .title-container {
             position: absolute;
             top: 15px;
             left: 15px;
-            width: 72%;
-            height: 52px;
+            width: 78%;
+            height: 56px;
             background: linear-gradient(to bottom, #4d3825, #2a1f15);
             border: 3px solid #1a130d;
             border-radius: 10px 10px 30px 10px;
@@ -66,24 +66,25 @@
                         2px 2px 4px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
-            padding-left: 10px;
+            justify-content: center;
+            padding: 0 8px;
             box-sizing: border-box;
             z-index: 2;
         }
 
         .unown-svg-title {
-            height: 32px;
-            width: auto;
+            width: 100%;
+            height: 42px;
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
         /* --- Area Rossa: Immagine Pokémon (Placeholder) --- */
         .card-image-box {
             position: absolute;
-            top: 78px;
+            top: 82px;
             left: 12px;
             right: 12px;
-            height: 250px;
+            height: 245px;
             background: linear-gradient(135deg, #2b231d 0%, #1a130d 100%);
             border: 4px solid #5c3d29;
             border-radius: 8px;
@@ -140,19 +141,61 @@
         <div class="card-inner-frame">
             
             <div class="title-container">
-                <svg class="unown-svg-title" viewBox="0 0 320 50" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="#d1b280" stroke="#1a130d" stroke-width="2">
-                        <circle cx="20" cy="25" r="14"/><circle cx="20" cy="25" r="5" fill="#1a130d"/><path d="M18 6v-4h4v4z" fill="#d1b280"/>
-                        <circle cx="55" cy="25" r="14"/><circle cx="55" cy="25" r="5" fill="#1a130d"/><path d="M53 6v-4h4v4z" fill="#d1b280"/><path d="M53 44v4h4v-4z" fill="#d1b280"/>
-                        <circle cx="90" cy="25" r="14"/><circle cx="90" cy="25" r="5" fill="#1a130d"/><path d="M88 6v-4h4v4z" fill="#d1b280"/><path d="M71 23h-4v4h4z" fill="#d1b280"/>
-                        <circle cx="125" cy="25" r="14"/><circle cx="125" cy="25" r="5" fill="#1a130d"/><path d="M123 6v-4h4v4z" fill="#d1b280"/><path d="M142 23h4v4h-4z" fill="#d1b280"/>
+                <svg class="unown-svg-title" viewBox="0 0 280 45" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" stroke="#d1b280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         
-                        <circle cx="175" cy="25" r="14"/><circle cx="175" cy="25" r="5" fill="#1a130d"/><path d="M173 6v-4h4v4z" fill="#d1b280"/>
-                        <circle cx="210" cy="25" r="14"/><circle cx="210" cy="25" r="5" fill="#1a130d"/><path d="M208 6v-4h4v4z" fill="#d1b280"/><path d="M208 44v4h4v-4z" fill="#d1b280"/>
-                        <circle cx="245" cy="25" r="14"/><circle cx="245" cy="25" r="5" fill="#1a130d"/><path d="M243 6v-4h4v4z" fill="#d1b280"/>
-                        <circle cx="280" cy="25" r="14"/><circle cx="280" cy="25" r="5" fill="#1a130d"/><path d="M278 6v-4h4v4z" fill="#d1b280"/><path d="M297 23h4v4h-4z" fill="#d1b280"/>
+                        <g transform="translate(10, 5)">
+                            <path d="M4 28 L4 12 L16 24 L16 8"/>
+                            <circle cx="10" cy="18" r="4" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(38, 5)">
+                            <circle cx="10" cy="18" r="9"/>
+                            <circle cx="10" cy="18" r="3" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(66, 5)">
+                            <path d="M3 28 L3 12 L9 20 L15 12 L15 28"/>
+                            <circle cx="9" cy="17" r="3.5" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(94, 5)">
+                            <path d="M14 28 L4 28 L4 8 L14 8"/>
+                            <path d="M4 18 L11 18"/>
+                            <circle cx="9" cy="18" r="3.5" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(132, 5)">
+                            <circle cx="10" cy="14" r="8"/>
+                            <path d="M10 22 L10 30"/>
+                            <circle cx="10" cy="14" r="3" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(160, 5)">
+                            <circle cx="10" cy="18" r="9"/>
+                            <circle cx="10" cy="18" r="3" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(188, 5)">
+                            <path d="M10 8 L10 28"/>
+                            <path d="M4 12 L14 22"/>
+                            <path d="M4 24 L14 14"/>
+                            <circle cx="10" cy="18" r="3" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(216, 5)">
+                            <path d="M14 28 L4 28 L4 8 L14 8"/>
+                            <path d="M4 18 L11 18"/>
+                            <path d="M7 3 L11 5"/>
+                            <circle cx="9" cy="18" r="3.5" fill="#d1b280"/>
+                        </g>
+
+                        <g transform="translate(244, 5)">
+                            <path d="M3 28 L3 12 L9 20 L15 12 L15 28"/>
+                            <circle cx="9" cy="17" r="3.5" fill="#d1b280"/>
+                        </g>
+
                     </g>
-                    <text x="15" y="31" font-family="monospace" font-size="14" font-weight="bold" fill="#2a1f15" opacity="0">NOME POKEMON</text>
                 </svg>
             </div>
             
