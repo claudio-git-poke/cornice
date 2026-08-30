@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta da Gioco - Modificabile</title>
+    <style>
+        .card-container {
+            position: relative;
+            width: 400px;
+            height: 560px;
+            /* Immagine di sfondo principale (il bordo della carta) */
+            background-image: url('carta.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Area rettangolare centrale editabile per il testo o le immagini */
+        .card-inner-box {
+            position: absolute;
+            top: 75px;   /* Regola la posizione dall'alto se necessario */
+            left: 65px;  /* Regola la posizione da sinistra se necessario */
+            width: 270px; /* Larghezza dell'area rettangolare */
+            height: 285px; /* Altezza dell'area rettangolare */
+            
+            /* Stile interno editabile */
+            padding: 15px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.1); /* Sfondo opzionale trasparente */
+            color: #333;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Esempio di contenuto testuale interno */
+        .card-inner-box h2 {
+            font-size: 22px;
+            margin: 0 0 10px 0;
+            color: #2b1d0c;
+        }
+
+        .card-inner-box p {
+            font-size: 14px;
+            margin: 0;
+            color: #4a3b2c;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <!-- L'IA può modificare liberamente questo blocco rettangolare -->
+    <div class="card-inner-box">
+        <h2>Titolo Carta</h2>
+        <p>Qui puoi inserire la descrizione, le statistiche o un'altra immagine. Essendo un rettangolo standard, è comodissimo da gestire!</p>
+    </div>
+</div>
+
+</body>
+</html>
