@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica - Unown</title>
+    <title>Carta Pokémon Antica - Completa</title>
     <style>
         /* Schermo intero e sfondo suggestivo */
         body {
@@ -52,7 +52,7 @@
             position: relative;
         }
 
-        /* --- Area del Titolo in stile Unown --- */
+        /* --- Area del Titolo (In alto a sinistra) --- */
         .title-container {
             position: absolute;
             top: 15px;
@@ -67,20 +67,77 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding-left: 12px;
+            padding-left: 10px;
             box-sizing: border-box;
+            z-index: 2;
         }
 
-        /* Stile grafico ispirato ai simboli Unown (lettere cerchiate/arcaiche) */
         .unown-title {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
             color: #d1b280;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.9),
                          0 0 5px rgba(209, 178, 128, 0.4);
+        }
+
+        /* --- Area Rossa: Immagine Pokémon (Placeholder) --- */
+        .card-image-box {
+            position: absolute;
+            top: 78px; /* Sotto al titolo con margine */
+            left: 12px;
+            right: 12px;
+            height: 250px; /* Spazio dedicato all'illustrazione */
+            background: linear-gradient(135deg, #2b231d 0%, #1a130d 100%);
+            border: 4px solid #5c3d29;
+            border-radius: 8px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8),
+                        0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Stile per quando caricherai l'immagine (basterà sostituire il tag <img> o il background) */
+        .card-image-box span {
+            color: #8c6b48;
+            font-family: 'Georgia', serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* --- Area Verde: Testo Descrittivo --- */
+        .card-description-box {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            height: 110px; /* Spazio dedicato alla descrizione della carta sbustata */
+            background: linear-gradient(to bottom, #f4e8d1, #dcc4a0);
+            border: 3px solid #7a5c3e;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(122, 92, 62, 0.3),
+                        0 2px 4px rgba(0,0,0,0.2);
+            padding: 10px 12px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-description-text {
+            font-family: 'Georgia', serif;
+            font-size: 12px;
+            color: #3d2817;
+            text-align: center;
+            line-height: 1.4;
+            font-style: italic;
         }
     </style>
 </head>
@@ -89,9 +146,18 @@
     <div class="pokemon-card">
         <div class="card-inner-frame">
             
-            <!-- Contenitore del Titolo -->
             <div class="title-container">
                 <span class="unown-title">ⓃⓄⓂⒺ ⓅⓄⓀÉⓂⓄⓃ</span>
+            </div>
+            
+            <div class="card-image-box">
+                <span>[ Inserisci qui la tua immagine ]</span>
+            </div>
+
+            <div class="card-description-box">
+                <p class="card-description-text">
+                    "Ritrovata tra le rovine di un tempio dimenticato. Emana una strana energia primordiale ogni volta che viene estratta dal mazzo."
+                </p>
             </div>
             
         </div>
