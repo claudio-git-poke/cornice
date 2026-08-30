@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta da Gioco - Modificabile</title>
+    <title>Carta Dinamica</title>
     <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
         .card-container {
             position: relative;
             width: 400px;
             height: 560px;
-            /* Immagine di sfondo principale (il bordo della carta) */
-            background-image: url('carta.png');
+            /* Percorso dell'immagine di sfondo */
+            background-image: url('./carta.png');
             background-size: cover;
             background-repeat: no-repeat;
             font-family: Arial, sans-serif;
@@ -19,16 +28,15 @@
         /* Area rettangolare centrale editabile per il testo o le immagini */
         .card-inner-box {
             position: absolute;
-            top: 75px;   /* Regola la posizione dall'alto se necessario */
-            left: 65px;  /* Regola la posizione da sinistra se necessario */
-            width: 270px; /* Larghezza dell'area rettangolare */
-            height: 285px; /* Altezza dell'area rettangolare */
+            top: 75px;   
+            left: 65px;  
+            width: 270px; 
+            height: 285px; 
             
-            /* Stile interno editabile */
             padding: 15px;
             box-sizing: border-box;
-            background-color: rgba(255, 255, 255, 0.1); /* Sfondo opzionale trasparente */
-            color: #333;
+            background-color: rgba(255, 255, 255, 0.15); /* Sfondo leggero per leggibilità */
+            color: #2b1d0c;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -37,17 +45,14 @@
             text-align: center;
         }
 
-        /* Esempio di contenuto testuale interno */
         .card-inner-box h2 {
             font-size: 22px;
             margin: 0 0 10px 0;
-            color: #2b1d0c;
         }
 
         .card-inner-box p {
             font-size: 14px;
             margin: 0;
-            color: #4a3b2c;
             line-height: 1.4;
         }
     </style>
@@ -55,10 +60,9 @@
 <body>
 
 <div class="card-container">
-    <!-- L'IA può modificare liberamente questo blocco rettangolare -->
     <div class="card-inner-box">
         <h2>Titolo Carta</h2>
-        <p>Qui puoi inserire la descrizione, le statistiche o un'altra immagine. Essendo un rettangolo standard, è comodissimo da gestire!</p>
+        <p>Qui puoi inserire la descrizione, le statistiche o un'altra immagine. È facilissimo da modificare!</p>
     </div>
 </div>
 
