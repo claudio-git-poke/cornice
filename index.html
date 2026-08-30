@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica - Completa</title>
+    <title>Carta Pokémon Antica</title>
     <style>
         /* Schermo intero e sfondo suggestivo */
         body {
@@ -52,7 +52,7 @@
             position: relative;
         }
 
-        /* --- Area del Titolo (In alto a sinistra) --- */
+        /* --- Area del Titolo (Con glifi Unown Vettoriali) --- */
         .title-container {
             position: absolute;
             top: 15px;
@@ -66,30 +66,24 @@
                         2px 2px 4px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
-            justify-content: flex-start;
             padding-left: 10px;
             box-sizing: border-box;
             z-index: 2;
         }
 
-        .unown-title {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
-            font-weight: bold;
-            color: #d1b280;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.9),
-                         0 0 5px rgba(209, 178, 128, 0.4);
+        .unown-svg-title {
+            height: 32px;
+            width: auto;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
         /* --- Area Rossa: Immagine Pokémon (Placeholder) --- */
         .card-image-box {
             position: absolute;
-            top: 78px; /* Sotto al titolo con margine */
+            top: 78px;
             left: 12px;
             right: 12px;
-            height: 250px; /* Spazio dedicato all'illustrazione */
+            height: 250px;
             background: linear-gradient(135deg, #2b231d 0%, #1a130d 100%);
             border: 4px solid #5c3d29;
             border-radius: 8px;
@@ -101,7 +95,6 @@
             overflow: hidden;
         }
 
-        /* Stile per quando caricherai l'immagine (basterà sostituire il tag <img> o il background) */
         .card-image-box span {
             color: #8c6b48;
             font-family: 'Georgia', serif;
@@ -118,7 +111,7 @@
             bottom: 12px;
             left: 12px;
             right: 12px;
-            height: 110px; /* Spazio dedicato alla descrizione della carta sbustata */
+            height: 110px;
             background: linear-gradient(to bottom, #f4e8d1, #dcc4a0);
             border: 3px solid #7a5c3e;
             border-radius: 8px;
@@ -147,7 +140,20 @@
         <div class="card-inner-frame">
             
             <div class="title-container">
-                <span class="unown-title">ⓃⓄⓂⒺ ⓅⓄⓀÉⓂⓄⓃ</span>
+                <svg class="unown-svg-title" viewBox="0 0 320 50" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="#d1b280" stroke="#1a130d" stroke-width="2">
+                        <circle cx="20" cy="25" r="14"/><circle cx="20" cy="25" r="5" fill="#1a130d"/><path d="M18 6v-4h4v4z" fill="#d1b280"/>
+                        <circle cx="55" cy="25" r="14"/><circle cx="55" cy="25" r="5" fill="#1a130d"/><path d="M53 6v-4h4v4z" fill="#d1b280"/><path d="M53 44v4h4v-4z" fill="#d1b280"/>
+                        <circle cx="90" cy="25" r="14"/><circle cx="90" cy="25" r="5" fill="#1a130d"/><path d="M88 6v-4h4v4z" fill="#d1b280"/><path d="M71 23h-4v4h4z" fill="#d1b280"/>
+                        <circle cx="125" cy="25" r="14"/><circle cx="125" cy="25" r="5" fill="#1a130d"/><path d="M123 6v-4h4v4z" fill="#d1b280"/><path d="M142 23h4v4h-4z" fill="#d1b280"/>
+                        
+                        <circle cx="175" cy="25" r="14"/><circle cx="175" cy="25" r="5" fill="#1a130d"/><path d="M173 6v-4h4v4z" fill="#d1b280"/>
+                        <circle cx="210" cy="25" r="14"/><circle cx="210" cy="25" r="5" fill="#1a130d"/><path d="M208 6v-4h4v4z" fill="#d1b280"/><path d="M208 44v4h4v-4z" fill="#d1b280"/>
+                        <circle cx="245" cy="25" r="14"/><circle cx="245" cy="25" r="5" fill="#1a130d"/><path d="M243 6v-4h4v4z" fill="#d1b280"/>
+                        <circle cx="280" cy="25" r="14"/><circle cx="280" cy="25" r="5" fill="#1a130d"/><path d="M278 6v-4h4v4z" fill="#d1b280"/><path d="M297 23h4v4h-4z" fill="#d1b280"/>
+                    </g>
+                    <text x="15" y="31" font-family="monospace" font-size="14" font-weight="bold" fill="#2a1f15" opacity="0">NOME POKEMON</text>
+                </svg>
             </div>
             
             <div class="card-image-box">
