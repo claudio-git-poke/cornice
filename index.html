@@ -50,7 +50,7 @@
             color: #fff;
         }
 
-        /* Contenitore principale della carta (I colori cambiano tramite classi JavaScript) */
+        /* Contenitore principale della carta */
         .pokemon-card {
             width: 380px;
             height: 532px;
@@ -262,7 +262,7 @@
 
             <div class="card-description-box">
                 <p class="card-description-text" id="descText">
-                    "Ritrovata tra le rovine di un tempio dimenticato. Emana una strana energia primordiale."
+                    "Carta Comune: Un reperto piuttosto comune tra la polvere delle antiche biblioteche."
                 </p>
             </div>
             
@@ -274,12 +274,12 @@
             const card = document.getElementById('pokemonCard');
             const descText = document.getElementById('descText');
             
-            // Rimuove tutte le classi di rarità precedenti
+            // Rimuove e aggiorna la classe della carta
             card.className = 'pokemon-card ' + rarityClass;
             
-            // Cambia il testo descrittivo in base alla rarità scelta
+            // Aggiorna il testo descrittivo in base alla rarità scelta
             switch(rarityClass) {
-                comune:
+                case 'comune':
                     descText.innerText = '"Carta Comune: Un reperto piuttosto comune tra la polvere delle antiche biblioteche."';
                     break;
                 case 'non-comune':
