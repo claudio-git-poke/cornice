@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica</title>
+    <title>Carta Pokémon Antica - Titolo</title>
     <style>
-        /* Schermo intero e sfondo suggestivo */
         body {
             background: radial-gradient(circle, #2b231d 0%, #120e0b 100%);
             display: flex;
@@ -18,25 +17,18 @@
             font-family: 'Georgia', serif;
         }
 
-        /* Struttura principale della carta (Stile Antico/Rovinato) */
         .pokemon-card {
             width: 380px;
             height: 532px;
-            /* Sfondo pergamena con texture e sfumature di usura */
             background: 
                 radial-gradient(circle, rgba(245, 230, 205, 0.8) 0%, rgba(196, 164, 124, 0.9) 100%),
                 repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 2px, transparent 2px, transparent 4px);
             border-radius: 20px;
-            
-            /* Bordo spesso e irregolare, stile metallo/pietra antica ossidata */
             border: 14px solid #3d2817; 
-            
-            /* Effetti di usura: ombre profonde, usura sui bordi e graffi interni */
             box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.8),
                 inset 0 0 30px rgba(70, 45, 25, 0.7),
                 inset 0 0 10px rgba(0, 0, 0, 0.9);
-            
             display: flex;
             flex-direction: column;
             padding: 15px;
@@ -44,7 +36,6 @@
             position: relative;
         }
 
-        /* Effetto "carta logorata" agli angoli con sfumature scure */
         .pokemon-card::after {
             content: "";
             position: absolute;
@@ -54,10 +45,9 @@
             pointer-events: none;
         }
 
-        /* Area interna per i contenuti della carta */
         .card-inner-frame {
             background: linear-gradient(135deg, #e6d3b3 0%, #cfb58c 100%);
-            border: 4px solid #6b4d32; /* Cornice interna in legno/bronzo antico */
+            border: 4px solid #6b4d32;
             border-radius: 12px;
             flex: 1;
             display: flex;
@@ -66,6 +56,42 @@
             box-sizing: border-box;
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1;
+            position: relative; /* Necessario per posizionare il titolo */
+        }
+
+        /* --- NUOVO: Area del Titolo --- */
+        .title-container {
+            position: absolute;
+            top: 15px; /* Appena sotto il bordo interno */
+            left: 15px; /* Appena sotto il bordo interno */
+            width: 65%; /* Occupa circa due terzi della larghezza */
+            height: 45px; /* Altezza sufficiente per il font */
+            
+            /* Stile pergamena scura per il titolo */
+            background: linear-gradient(to bottom, #a68a64, #7a6349);
+            border: 3px solid #4d3825;
+            border-radius: 8px 8px 25px 8px; /* Angolo inferiore destro arrotondato per stile antico */
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 
+                        3px 3px 5px rgba(0,0,0,0.3);
+            
+            /* Allineamento del testo placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .card-title {
+            font-family: 'Georgia', serif; /* Stile classico</b> */
+            font-size: 22px;
+            color: #fdf3d8; /* Colore crema chiaro */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
+                         -1px -1px 0px rgba(255,255,255,0.2); /* Effetto metallico/invecchiato */
+            pointer-events: none; /* Cliccabile attraverso */
         }
     </style>
 </head>
@@ -73,4 +99,13 @@
 
     <div class="pokemon-card">
         <div class="card-inner-frame">
+            
+            <div class="title-container">
+                <span class="card-title">NOME POKÉMON</span>
             </div>
+            
+            </div>
+    </div>
+
+</body>
+</html>
