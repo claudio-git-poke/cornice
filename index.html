@@ -3,91 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon - Struttura Pura</title>
+    <title>Mia Carta Pokémon</title>
     <style>
         body {
-            background-color: #1a1a1a;
+            background-color: #2b2b2b;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Struttura principale della carta */
         .pokemon-card {
+            width: 350px;
+            height: 490px;
+            background-color: #f8d030; /* Giallo classico stile retro Pokémon */
+            border-radius: 20px;
+            /* Spessore esterno tramite bordi multipli e ombre */
+            border: 12px solid #1a1a1a; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+                        inset 0 0 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            box-sizing: border-box;
             position: relative;
-            width: 750px;        
-            height: 1049px;      
-            border-radius: 40px; 
-            
-            background-image: url('./carta.png');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            overflow: hidden;
         }
 
-        /* Area immagine centrale corretta */
-        .card-image-area {
-            position: absolute;
-            top: 17.5%;      /* Abbassato per non uscire sopra */
-            left: 15.2%;
-            width: 69.5%;    
-            height: 44.5%;   /* Altezza calibrata sul buco */
-            
-            background-color: transparent;
+        /* Area interna pronta per i futuri contenuti */
+        .card-inner-frame {
+            background-color: #ffffff;
+            border: 4px solid #c0c0c0; /* Cornice interna argentata */
+            border-radius: 10px;
+            flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        
-        .card-image-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Area nome della carta */
-        .card-name-area {
-            position: absolute;
-            top: 66.5%;      
-            left: 25%;
-            width: 50%;      
-            height: 5%;      
-            
-            background-color: transparent;
-            color: #2b1d0c;  
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .card-name-area h1 {
-            font-size: 32px; 
-            margin: 0;
-            font-weight: bold;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
 
-<div class="pokemon-card">
-    
-    <!-- Spazio per l'immagine centrale -->
-    <div class="card-image-area">
-        <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=600" alt="Illustrazione">
+    <div class="pokemon-card">
+        <div class="card-inner-frame">
+            </div>
     </div>
-
-    <!-- Spazio per il nome editabile -->
-    <div class="card-name-area">
-        <h1>NOME CARTA</h1>
-    </div>
-
-</div>
 
 </body>
 </html>
