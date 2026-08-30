@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Pokémon Antica - Selettore rarità</title>
+    <title>Carta Pokémon Antica - Effetto Sbrilluccichio</title>
     <style>
         body {
             background: radial-gradient(circle at center, #2b231d 0%, #120e0b 100%);
@@ -66,8 +66,48 @@
             padding: 15px;
             box-sizing: border-box;
             position: relative;
+            overflow: hidden; /* Fondamentale per contenere l'effetto sbrilluccichio */
             transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
+
+        /* --- EFFETTO SBRILLUCCICHIO (HOLO FOIL) --- */
+        .pokemon-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.25) 45%,
+                rgba(255, 215, 0, 0.3) 50%,
+                rgba(255, 255, 255, 0.25) 55%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            transform: rotate(25deg) translateY(-100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Attivazione sbrilluccichio per Ultra Rara e Leggendaria */
+        .pokemon-card.ultra-rara::after,
+        .pokemon-card.leggendaria::after {
+            opacity: 1;
+            animation: holo-shine 4s infinite linear;
+        }
+
+        @keyframes holo-shine {
+            0% {
+                transform: rotate(25deg) translateY(-100%);
+            }
+            100% {
+                transform: rotate(25deg) translateY(100%);
+            }
+        }
+
 
         /* --- STILI DINAMICI PER RARITÀ --- */
 
@@ -229,6 +269,7 @@
 </head>
 <body>
 
+    <!-- Menu con i pulsanti per cambiare rarità -->
     <div class="rarity-controls">
         <button class="rarity-btn" onclick="setRarity('comune')">Comune</button>
         <button class="rarity-btn" onclick="setRarity('non-comune')">Non Comune</button>
@@ -237,9 +278,11 @@
         <button class="rarity-btn" onclick="setRarity('leggendaria')">Leggendaria</button>
     </div>
 
+    <!-- Carta Pokémon -->
     <div class="pokemon-card comune" id="pokemonCard">
         <div class="card-inner-frame">
             
+            <!-- Titolo Unown -->
             <div class="title-container">
                 <svg class="unown-svg-title" viewBox="0 0 280 45" xmlns="http://www.w3.org/2000/svg">
                     <g fill="none" stroke="#d1b280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -256,10 +299,12 @@
                 </svg>
             </div>
             
+            <!-- Immagine (Placeholder) -->
             <div class="card-image-box">
                 <span>[ Inserisci qui la tua immagine ]</span>
             </div>
 
+            <!-- Testo Descrittivo -->
             <div class="card-description-box">
                 <p class="card-description-text" id="descText">
                     "Carta Comune: Un reperto piuttosto comune tra la polvere delle antiche biblioteche."
@@ -269,6 +314,7 @@
         </div>
     </div>
 
+    <!-- Script JavaScript -->
     <script>
         function setRarity(rarityClass) {
             const card = document.getElementById('pokemonCard');
